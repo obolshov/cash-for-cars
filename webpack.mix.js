@@ -1,4 +1,6 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
+
+require("vuetifyjs-mix-extension");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +13,12 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js("resources/js/app.js", "public/js")
+    .sass("resources/sass/app.sass", "public/css")
+    .vuetify("vuetify-loader", {
+        sassOptions: {
+            quietDeps: true,
+        },
+    })
+    .vue()
+    .copy("resources/images", "public/images");

@@ -1,0 +1,51 @@
+body {
+  font-family: Manrope, sans-serif;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url(/fonts/Manrope-Regular.ttf?b1d694f660569a9a9ee6d1236227eaff);
+}
+.v-application .v-application--wrap {
+  font-family: "Manrope", sans-serif !important;
+}
+.v-application .v-application--wrap .text-h3, .v-application .v-application--wrap .text-h4, .v-application .v-application--wrap .text-h5, .v-application .v-application--wrap .text-h6, .v-application .v-application--wrap p, .v-application .v-application--wrap li {
+  font-family: "Manrope", sans-serif !important;
+}
+
+@font-face {
+  font-family: "UKNumberPlate";
+  src: url(/fonts/UKNumberPlate.ttf?43b06a8e7226060612553f2d4b3f6140);
+}
+.inner_content {
+  margin: 0 auto;
+}
+@media screen and (min-width: 600px) {
+  .inner_content {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .inner_content {
+    padding: 0 1.5rem;
+  }
+}
+
+p {
+  color: var(--v-darkblue-base);
+}
+
+.v-application .text-h3, .v-application .text-h4 {
+  color: var(--v-primary-base);
+  font-weight: 700 !important;
+  font-family: "Manrope", sans-serif !important;
+}
+
+.v-toolbar__content, .v-toolbar__extension {
+  padding: 0 !important;
+}
+
+.v-card__title {
+  word-break: normal !important;
+}

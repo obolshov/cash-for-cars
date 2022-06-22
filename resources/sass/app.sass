@@ -1,0 +1,42 @@
+body
+  font-family: Manrope, sans-serif
+  padding: 0
+
+@font-face
+  font-family: "Manrope"
+  src: url("../fonts/Manrope-Regular.ttf")
+
+$body-font-family: "Manrope"
+
+.v-application .v-application--wrap
+  font-family: $body-font-family, sans-serif !important
+
+  .text-h3, .text-h4, .text-h5, .text-h6, p, li
+    font-family: $body-font-family, sans-serif !important
+
+
+@font-face
+  font-family: "UKNumberPlate"
+  src: url("../fonts/UKNumberPlate.ttf")
+
+.inner_content
+  margin: 0 auto
+  @media screen and (min-width: 600px)
+    width: 80%
+  @media screen and (max-width: 600px)
+    padding: 0 1.5rem
+
+p
+  color: var(--v-darkblue-base)
+
+.v-application
+  .text-h3, .text-h4
+    color: var(--v-primary-base)
+    font-weight: 700 !important
+    font-family: "Manrope", sans-serif !important
+
+.v-toolbar__content, .v-toolbar__extension
+    padding: 0 !important
+
+.v-card__title
+  word-break: normal!important
