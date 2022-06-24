@@ -102,11 +102,16 @@
             >
               <v-carousel-item v-for="(review, index) in reviews" :key="index">
                 <v-card elevation="0">
-                  <v-card-title
-                    class="review rounded-lg py-12 px-14 text-h5"
-                    v-text="review.text"
+                  <v-card-text
+                    class="review black--text rounded-lg py-10 px-12 text-h5"
                   >
-                  </v-card-title>
+                    <div>{{ review.text.slice(0, 110) + "..." }}</div>
+                    <p class="text-right mb-0 mt-3">
+                      <i>{{
+                        review.author_first_name + " " + review.author_last_name
+                      }}</i>
+                    </p>
+                  </v-card-text>
                 </v-card>
               </v-carousel-item>
             </v-carousel>
@@ -161,12 +166,6 @@ export default {
           title: "Sell On Your Own",
           text: "Selling a car on your own can be unpredictable and stressful, with CashForCars you can sell your car as soon as you're ready. Check out why we're better than selling it yourself!",
         },
-      ],
-      carousel: [
-        "Can't recommend them enough. Their fast, friendly service was ideal, and they offered us a better price than other trade in sites...",
-        "Can't recommend them enough. Their fast, friendly service was ideal, and they offered us a better price than other trade in sites...",
-        "Can't recommend them enough. Their fast, friendly service was ideal, and they offered us a better price than other trade in sites...",
-        "Can't recommend them enough. Their fast, friendly service was ideal, and they offered us a better price than other trade in sites...",
       ],
     };
   },
