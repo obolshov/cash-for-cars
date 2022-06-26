@@ -92,7 +92,9 @@ return [
                 'permissions',
                 'roles',
                 'translations',
-                'user_roles'
+                'user_roles',
+                'menus',
+                'users',
             ],
         ],
         'autoload_migrations' => true,

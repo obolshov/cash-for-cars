@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Models\Content;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Controller::class, 'index']);
+Route::get('/', function () {
+    $content = Content::first()->content;
+    return view('landing', ['content' => json_decode($content, associative: true)]);
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

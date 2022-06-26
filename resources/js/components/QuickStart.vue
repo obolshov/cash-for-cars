@@ -8,14 +8,12 @@
           <div
             class="primary--text mb-6"
             :class="$vuetify.breakpoint.mdAndUp ? 'text-h3' : 'text-h4'"
-          >
-            Enter your vehicle details to receive a free valuation.
-          </div>
-          <p :class="{ 'text-h5': $vuetify.breakpoint.mdAndUp }">
-            If your vehicle has <b>less than 100,000 miles</b> enter your
-            vehicle and contact details and we will contact you with a cash
-            valuation within 24 hours.
-          </p>
+            v-text="content.title"
+          ></div>
+          <p
+            :class="{ 'text-h5': $vuetify.breakpoint.mdAndUp }"
+            v-html="content.text"
+          ></p>
         </v-col>
         <v-col cols="12" md="5">
           <v-form>
@@ -44,6 +42,7 @@ import GetStartedButton from "./GetStartedButton";
 export default {
   name: "QuickStart",
   components: { GetStartedButton },
+  props: ["content"],
   data() {
     return {
       checkbox: true,

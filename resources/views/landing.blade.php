@@ -18,10 +18,13 @@
     <div id="app">
         <v-app>
             <navbar></navbar>
-            <quick-start></quick-start>
-            <short-description></short-description>
-            <how-it-works></how-it-works>
-            <main-description :reviews="{{ json_encode($reviews) }}"></main-description>
+            <quick-start :content="{{ Js::from($content['quick-start']) }}"></quick-start>
+            <short-description :content="{{ Js::from($content['short-description']) }}"></short-description>
+            <how-it-works :content="{{ Js::from($content['how-it-works']) }}"></how-it-works>
+            <main-description :benefits="{{ Js::from($content['benefits']) }}"
+                :details="{{ Js::from($content['details']) }}" :blue-cards="{{ Js::from($content['blue-cards']) }}"
+                :reviews="{{ Js::from($content['reviews']) }}">
+            </main-description>
             <footer-section></footer-section>
         </v-app>
     </div>

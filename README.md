@@ -2,7 +2,7 @@
 
 ## Getting started
 
-Crete .env and set appropriate variables:
+Create .env (all variables are already set)
 ```bash
 cp .env.example .env
 ```
@@ -10,11 +10,6 @@ cp .env.example .env
 Install frontend dependencies
 ```bash
 npm install
-```
-
-Generate the build
-```bash
-npm run prod
 ```
 
 Start application docker containers:
@@ -28,11 +23,18 @@ docker-compose exec app composer install
 docker-compose exec app php artisan key:generate
 ```
 
-Migrate database, install voyager and run seeders
+Migrate database
 ```bash
 docker-compose exec app php artisan migrate
-docker-compose exec app php artisan voyager:install
-docker-compose exec app php artisan db:seed
 ```
 
-Application server should be ready on `http://localhost:<APP_PORT>`
+Install voyager
+```bash
+docker-compose exec app php artisan voyager:install
+```
+
+Then import dump `dump-cash_for_cars.sql` into the newly created database.
+
+Application server should be ready on `http://localhost:8000`
+
+To edit the content of the landing page, you need to go to the admin panel using the link `http://localhost:8000/admin/contents/1/edit`. The page content is presented as a JSON string, which has a strict hierarchy.

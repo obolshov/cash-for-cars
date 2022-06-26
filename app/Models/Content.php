@@ -4,16 +4,19 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Casts\PrettyJson;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Review extends Model
+class Content extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'text',
-        'author_first_name',
-        'author_last_name',
+        'content',
+    ];
+
+    protected $casts = [
+        'content' => PrettyJson::class
     ];
 }

@@ -1,29 +1,14 @@
 <template>
   <section class="inner_content">
     <div class="description">
-      <div class="text-h4 mb-8">Why choose CashForCars to sell your car?</div>
+      <div class="text-h4 mb-8" v-text="benefits.title"></div>
       <v-row class="justify-space-between">
         <v-col cols="12" md="6">
-          <p>
-            Advertising your car for sale privately can be a costly, not to
-            mention frustrating process which is renowned for attracting time
-            wasters.
-          </p>
-          <p>
-            Using CashForCars eliminates the hassle of strangers visiting your
-            home, the worry associated with them taking a test drive uninsured
-            and guarantees peace of mind by working with a reputable company.
-          </p>
-          <p>
-            By dealing directly with CashForCars you also eliminate the worry of
-            cheques bouncing and unsatisfied customers returning to your door.
-          </p>
-          <p>
-            CashForCars is the quick, easy and efficient way to turn your car
-            into cash for whatever reason. If you are purchasing a replacement
-            vehicle of a dealer, selling your car to CashForCars puts you in the
-            driving seat and you will be able to negotiate a much better deal.
-          </p>
+          <p
+            v-for="(paragraph, index) in benefits.text"
+            :key="index"
+            v-text="paragraph"
+          ></p>
         </v-col>
         <v-col cols="12" md="5">
           <v-img
@@ -73,7 +58,12 @@
     </div>
     <div class="blue-cards">
       <v-row>
-        <v-col v-for="card in cards" :key="card.title" cols="12" md="6">
+        <v-col
+          v-for="card in blueCards.list"
+          :key="card.title"
+          cols="12"
+          md="6"
+        >
           <v-card class="card rounded-lg pa-4" color="primary" elevation="0">
             <v-card-title
               class="text-h4 white--text"
@@ -87,9 +77,7 @@
     <div class="reviews">
       <v-row class="justify-space-between">
         <v-col cols="12" md="5">
-          <div class="text-h4 primary--text">
-            What our customers have been saying
-          </div>
+          <div class="text-h4 primary--text" v-text="reviews.title"></div>
         </v-col>
         <v-col cols="12" md="6">
           <div>
@@ -100,16 +88,17 @@
               :show-arrows="false"
               class="pb-16"
             >
-              <v-carousel-item v-for="(review, index) in reviews" :key="index">
+              <v-carousel-item
+                v-for="(review, index) in reviews.list"
+                :key="index"
+              >
                 <v-card elevation="0">
                   <v-card-text
                     class="review black--text rounded-lg py-10 px-12 text-h5"
                   >
                     <div>{{ review.text.slice(0, 110) + "..." }}</div>
                     <p class="text-right mb-0 mt-3">
-                      <i>{{
-                        review.author_first_name + " " + review.author_last_name
-                      }}</i>
+                      <i>{{ review.author }}</i>
                     </p>
                   </v-card-text>
                 </v-card>
@@ -127,46 +116,19 @@ import { mdiCheckCircle } from "@mdi/js";
 
 export default {
   name: "MainDescription",
-  props: {
-    reviews: [
-      { text: String, author_first_name: String, author_last_name: String },
-    ],
+  computed: {
+    detailsList() {
+      let length = this.details.text.length;
+      return [
+        this.details.text.slice(0, length / 2),
+        this.details.text.slice(length / 2),
+      ];
+    },
   },
+  props: ["benefits", "details", "blueCards", "reviews"],
   data() {
     return {
       mdiCheckCircle: mdiCheckCircle,
-      detailsList: [
-        [
-          "Sell your car right away",
-          "Secure payment & release of ownership",
-          "Sales are final",
-          "Instant Payment",
-          "No Fees",
-          "No Strangers Visiting Your Home",
-          "No Time Wasters & Tyre Kickers",
-          "We'll take your car as it is",
-        ],
-        [
-          "We'll take your car as it is",
-          "Cash in hand and more of it",
-          "Transparent and fair appraisal",
-          "Know the price upfront",
-          "Easy and convenient",
-          "Outstanding Finance Settled",
-          "No Bouncing Cheques",
-          "Avoid Uninsured Test Drives",
-        ],
-      ],
-      cards: [
-        {
-          title: "Trade In",
-          text: "Don't let dealers give you less at trade-in, take a look at why CashForCars is a great way to get more money for your car! There are many great reasons to choose us over a standard dealer trade-in!",
-        },
-        {
-          title: "Sell On Your Own",
-          text: "Selling a car on your own can be unpredictable and stressful, with CashForCars you can sell your car as soon as you're ready. Check out why we're better than selling it yourself!",
-        },
-      ],
     };
   },
 };

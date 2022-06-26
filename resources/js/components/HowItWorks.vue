@@ -2,14 +2,15 @@
   <section class="d-flex align-center white--text">
     <div class="background-gradient"></div>
     <div class="inner_content">
-      <div class="text-h4 white--text text-center mb-6">How it works</div>
-      <div class="text-h5 text-center mb-16">
-        It's so easy to sell your car with CashForCars!
-      </div>
+      <div
+        class="text-h4 white--text text-center mb-6"
+        v-text="content.title"
+      ></div>
+      <div class="text-h5 text-center mb-16" v-text="content.subtitle"></div>
       <div>
         <v-row class="justify-center align-center">
           <v-col
-            v-for="(step, index) in workflowSteps"
+            v-for="(step, index) in content.list"
             :key="step.title"
             cols="12"
             md="4"
@@ -17,7 +18,7 @@
           >
             <div>
               <img
-                :src="step.icon"
+                :src="icons[index]"
                 alt="icon"
                 class="rounded-circle accent mb-4"
               />
@@ -36,24 +37,13 @@
 <script>
 export default {
   name: "HowItWorks",
+  props: ["content"],
   data() {
     return {
-      workflowSteps: [
-        {
-          icon: "../../images/google-forms.svg",
-          title: "Enter Your Details",
-          text: "It takes just a few minutes to complete a form providing us with details of your vehicle. Answer a few questions about your cars mileage, age, condition, etc and fill in your personal details.",
-        },
-        {
-          icon: "../../images/finance.svg",
-          title: "Receive a Price",
-          text: "We will contact you within 24hrs. If you are satisfied with our valuation we will arrange for you to meet at our premises or for a member of the CashForCars team to visit you.",
-        },
-        {
-          icon: "../../images/car-key.svg",
-          title: "Sell Your Car",
-          text: "Once you have met a member of our team the whole process should be concluded within 15–20 minutes. We will pay you by draft cheque or transfer the money securely by Faster Payments there and then, with no fees.",
-        },
+      icons: [
+        "../../images/google-forms.svg",
+        "../../images/finance.svg",
+        "../../images/car-key.svg",
       ],
     };
   },
